@@ -26,7 +26,6 @@ ARG MULTISTAGE_BUILDER_VERSION="2020-12-07"
 
 ######################################################### BUILDER ######################################################
 FROM ssmbtech/multistage-builder:$MULTISTAGE_BUILDER_VERSION as builder
-MAINTAINER Kevin Sandermann <kevin.sandermann@gmail.com>
 LABEL maintainer="kevin.sandermann@gmail.com"
 
 ARG OC_CLI_VERSION
@@ -142,8 +141,6 @@ WORKDIR /root
 #https://github.com/waleedka/modern-deep-learning-docker/issues/4#issue-292539892
 #bc and tcptraceroute needed for tcping
 RUN apt-get update && \
-    apt-get dist-upgrade -y && \
-    apt-get upgrade -y && \
     apt-get install -yq --no-install-recommends \
     apt-utils \
     apt-transport-https \

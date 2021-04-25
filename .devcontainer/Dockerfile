@@ -1,6 +1,8 @@
-# Note: You can use any Debian/Ubuntu based image you want. 
-FROM mcr.microsoft.com/vscode/devcontainers/base:0-buster
+ARG MULTISTAGE_BUILDER_VERSION="2020-12-07"
 
+# Note: You can use any Debian/Ubuntu based image you want. 
+######################################################### BUILDER ######################################################
+FROM ssmbtech/multistage-builder:$MULTISTAGE_BUILDER_VERSION as builder
 # [Option] Install zsh
 ARG INSTALL_ZSH="true"
 # [Option] Upgrade OS packages to their latest versions
