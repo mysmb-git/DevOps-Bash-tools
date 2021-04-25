@@ -9,15 +9,15 @@ UPSTREAM_TAG2="project"
 docker build \
     --pull \
     --no-cache \
-    -t ksandermann/cloud-toolbox:$IMAGE_TAG \
+    -t ssmbtech/cloud-toolbox:$IMAGE_TAG \
     .
 
 #push
 docker login
-docker push ksandermann/cloud-toolbox:$IMAGE_TAG
+docker push ssmbtech/cloud-toolbox:$IMAGE_TAG
 
-docker tag ksandermann/cloud-toolbox:$IMAGE_TAG ksandermann/cloud-toolbox:$UPSTREAM_TAG
-docker push ksandermann/cloud-toolbox:$UPSTREAM_TAG
+docker tag ssmbtech/cloud-toolbox:$IMAGE_TAG ssmbtech/cloud-toolbox:$UPSTREAM_TAG
+docker push ssmbtech/cloud-toolbox:$UPSTREAM_TAG
 
-docker tag ksandermann/cloud-toolbox:$IMAGE_TAG ksandermann/cloud-toolbox:$UPSTREAM_TAG2
-docker push ksandermann/cloud-toolbox:$UPSTREAM_TAG2
+docker tag ssmbtech/cloud-toolbox:$IMAGE_TAG ssmbtech/cloud-toolbox:$UPSTREAM_TAG2
+docker push ssmbtech/cloud-toolbox:$UPSTREAM_TAG2

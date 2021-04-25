@@ -25,7 +25,7 @@ ARG ZSH_VERSION="5.8-3ubuntu1"
 ARG MULTISTAGE_BUILDER_VERSION="2020-12-07"
 
 ######################################################### BUILDER ######################################################
-FROM ksandermann/multistage-builder:$MULTISTAGE_BUILDER_VERSION as builder
+FROM ssmbtech/multistage-builder:$MULTISTAGE_BUILDER_VERSION as builder
 MAINTAINER Kevin Sandermann <kevin.sandermann@gmail.com>
 LABEL maintainer="kevin.sandermann@gmail.com"
 
@@ -144,7 +144,7 @@ WORKDIR /root
 RUN apt-get update && \
     apt-get dist-upgrade -y && \
     apt-get upgrade -y && \
-    apt-get install -y \
+    apt-get install -yq --no-install-recommends \
     apt-utils \
     apt-transport-https \
     bash-completion \
@@ -192,7 +192,7 @@ RUN apt-get update && \
 #install zsh
 RUN locale-gen en_US.UTF-8
 RUN apt-get update && \
-    apt-get install -y \
+    apt-get install -yq --no-install-recommends \
     fonts-powerline \
     powerline \
     zsh=$ZSH_VERSION
@@ -247,7 +247,7 @@ RUN apt remove azure-cli -y && apt autoremove -y && \
     echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $AZ_REPO main" | \
     tee /etc/apt/sources.list.d/azure-cli.list && \
     apt-get update && \
-    apt-get install -y azure-cli=$AZ_CLI_VERSION && \
+    apt-get install -yq --no-install-recommends azure-cli=$AZ_CLI_VERSION && \
     az --version && \
     az extension add --name azure-devops
 
@@ -255,7 +255,7 @@ RUN apt remove azure-cli -y && apt autoremove -y && \
 RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list && \
     curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add - && \
     apt-get update && \
-    apt-get install -y \
+    apt-get install -yq --no-install-recommends \
     google-cloud-sdk=${GCLOUD_VERSION}
 
 #install binaries
