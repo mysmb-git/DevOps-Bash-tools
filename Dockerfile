@@ -118,7 +118,6 @@ RUN curl https://releases.hashicorp.com/sentinel/${SENTINEL_VERSION}/sentinel_${
 ######################################################### IMAGE ########################################################
 
 FROM ubuntu:$UBUNTU_VERSION
-MAINTAINER Kevin Sandermann <kevin.sandermann@gmail.com>
 LABEL maintainer="kevin.sandermann@gmail.com"
 
 # tooling versions
